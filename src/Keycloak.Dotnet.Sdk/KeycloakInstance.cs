@@ -8,9 +8,11 @@ public class KeycloakInstance : IDisposable
     {
         HttpClient = httpClient;
         Realms = new RealmsResource(this);
+        Clients = new ClientsResource(this);
     }
 
     public RealmsResource Realms { get; }
+    public ClientsResource Clients { get; }
 
     public void Dispose()
     {
