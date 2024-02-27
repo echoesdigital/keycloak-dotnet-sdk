@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keycloak.Dotnet.Sdk", "Keycloak.Dotnet.Sdk\Keycloak.Dotnet.Sdk.csproj", "{456FB3EF-0F44-42DC-9DAA-F90103A77BB5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{456FB3EF-0F44-42DC-9DAA-F90103A77BB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{456FB3EF-0F44-42DC-9DAA-F90103A77BB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{456FB3EF-0F44-42DC-9DAA-F90103A77BB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{456FB3EF-0F44-42DC-9DAA-F90103A77BB5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
