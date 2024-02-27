@@ -1,4 +1,4 @@
-﻿namespace Echoes.Digital.Keycloak.Dotnet.Sdk.Dtos.Roles;
+﻿namespace Echoes.Digital.Keycloak.Dotnet.Sdk.Dtos.RoleMappers;
 
 public record RoleDto
 {

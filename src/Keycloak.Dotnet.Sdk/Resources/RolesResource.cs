@@ -1,4 +1,6 @@
-﻿namespace Echoes.Digital.Keycloak.Dotnet.Sdk.Resources;
+﻿using Echoes.Digital.Keycloak.Dotnet.Sdk.Dtos.RoleMappers;
+
+namespace Echoes.Digital.Keycloak.Dotnet.Sdk.Resources;
 
 public class RolesResource(KeycloakInstance instance)
 {
