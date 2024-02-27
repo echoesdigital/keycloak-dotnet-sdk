@@ -11,7 +11,7 @@ global using Echoes.Digital.Keycloak.Dotnet.Sdk.Dtos.Auth;
 global using Echoes.Digital.Keycloak.Dotnet.Sdk.Dtos.Clients;
 global using Echoes.Digital.Keycloak.Dotnet.Sdk.Dtos.Core;
 global using Echoes.Digital.Keycloak.Dotnet.Sdk.Dtos.Realms;
-global using Echoes.Digital.Keycloak.Dotnet.Sdk.Dtos.Roles;
+global using Echoes.Digital.Keycloak.Dotnet.Sdk.Dtos.RoleMappers;
 global using Echoes.Digital.Keycloak.Dotnet.Sdk.Dtos.Users;
 global using Echoes.Digital.Keycloak.Dotnet.Sdk.Exceptions;
 global using Echoes.Digital.Keycloak.Dotnet.Sdk.Extensions;
