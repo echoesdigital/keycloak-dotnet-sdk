@@ -1,12 +1,19 @@
 ﻿namespace Echoes.Digital.Keycloak.Dotnet.Sdk.Resources;
 
-public class IdentityProvidersResource(KeycloakInstance instance)
+public class IdentityProvidersResource
 {
+    private readonly KeycloakInstance _instance;
+
+    public IdentityProvidersResource(KeycloakInstance instance)
+    {
+        _instance = instance;
+    }
+
     public async Task<ResultResponseDto> Create(string realm, IdentityProviderDto identityProvider)
     {
         var uri = new Uri($"admin/realms/{realm}/identity-provider/instances", UriKind.Relative);
 
-        using var response = await instance.HttpClient.PostJsonAsync(uri, identityProvider).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.PostJsonAsync(uri, identityProvider).ConfigureAwait(false);
 
         return new ResultResponseDto
         {
@@ -22,7 +29,7 @@ public class IdentityProvidersResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/identity-provider/instances/{identityProviderUuid}", UriKind.Relative);
 
-        using var response = await instance.HttpClient.GetAsync(uri).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.GetAsync(uri).ConfigureAwait(false);
 
         return new ResultResponseDto<IdentityProviderDto>
         {
@@ -39,7 +46,7 @@ public class IdentityProvidersResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/identity-provider/instances", UriKind.Relative);
 
-        using var response = await instance.HttpClient.GetAsync(uri).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.GetAsync(uri).ConfigureAwait(false);
 
         return new ResultResponseDto<List<IdentityProviderDto>>
         {
@@ -56,7 +63,7 @@ public class IdentityProvidersResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/identity-provider/instances/{identityProvider.Alias}", UriKind.Relative);
 
-        using var response = await instance.HttpClient.PutJsonAsync(uri, identityProvider).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.PutJsonAsync(uri, identityProvider).ConfigureAwait(false);
 
         return new ResultResponseDto
         {
@@ -72,7 +79,7 @@ public class IdentityProvidersResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/identity-provider/instances/{identityProviderAlias}", UriKind.Relative);
 
-        using var response = await instance.HttpClient.DeleteAsync(uri).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.DeleteAsync(uri).ConfigureAwait(false);
 
         return new ResultResponseDto
         {
@@ -88,7 +95,7 @@ public class IdentityProvidersResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/identity-provider/instances/{identityProviderAlias}/mappers", UriKind.Relative);
 
-        using var response = await instance.HttpClient.PostJsonAsync(uri, mapper).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.PostJsonAsync(uri, mapper).ConfigureAwait(false);
 
         return new ResultResponseDto
         {
@@ -104,7 +111,7 @@ public class IdentityProvidersResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/identity-provider/instances/{identityProviderAlias}/mappers/{mapperUuid}", UriKind.Relative);
 
-        using var response = await instance.HttpClient.GetAsync(uri).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.GetAsync(uri).ConfigureAwait(false);
 
         return new ResultResponseDto<IdentityProviderMapperDto>
         {
@@ -121,7 +128,7 @@ public class IdentityProvidersResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/identity-provider/instances/{identityProviderAlias}/mappers", UriKind.Relative);
 
-        using var response = await instance.HttpClient.GetAsync(uri).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.GetAsync(uri).ConfigureAwait(false);
 
         return new ResultResponseDto<List<IdentityProviderMapperDto>>
         {
@@ -138,7 +145,7 @@ public class IdentityProvidersResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/identity-provider/instances/{identityProviderAlias}/mappers/{mapper.Id}", UriKind.Relative);
 
-        using var response = await instance.HttpClient.PutJsonAsync(uri, mapper).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.PutJsonAsync(uri, mapper).ConfigureAwait(false);
 
         return new ResultResponseDto
         {
@@ -154,7 +161,7 @@ public class IdentityProvidersResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/identity-provider/instances/{identityProviderAlias}/mappers/{mapperUuid}", UriKind.Relative);
 
-        using var response = await instance.HttpClient.DeleteAsync(uri).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.DeleteAsync(uri).ConfigureAwait(false);
 
         return new ResultResponseDto
         {

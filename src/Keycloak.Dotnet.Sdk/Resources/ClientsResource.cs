@@ -1,12 +1,19 @@
 ﻿namespace Echoes.Digital.Keycloak.Dotnet.Sdk.Resources;
 
-public class ClientsResource(KeycloakInstance instance)
+public class ClientsResource
 {
+    private readonly KeycloakInstance _instance;
+
+    public ClientsResource(KeycloakInstance instance)
+    {
+        _instance = instance;
+    }
+
     public async Task<ResultResponseDto> Create(string realm, ClientDto client)
     {
         var uri = new Uri($"admin/realms/{realm}/clients", UriKind.Relative);
 
-        using var response = await instance.HttpClient.PostJsonAsync(uri, client).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.PostJsonAsync(uri, client).ConfigureAwait(false);
 
         return new ResultResponseDto
         {
@@ -22,7 +29,7 @@ public class ClientsResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/clients/{id}", UriKind.Relative);
 
-        using var response = await instance.HttpClient.GetAsync(uri).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.GetAsync(uri).ConfigureAwait(false);
 
         return new ResultResponseDto<ClientDto>
         {
@@ -39,7 +46,7 @@ public class ClientsResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/clients{filter.ToQueryString()}", UriKind.Relative);
 
-        using var response = await instance.HttpClient.GetAsync(uri).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.GetAsync(uri).ConfigureAwait(false);
 
         return new ResultResponseDto<List<ClientDto>>
         {
@@ -56,7 +63,7 @@ public class ClientsResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/clients/{client.Id}", UriKind.Relative);
 
-        using var response = await instance.HttpClient.PutJsonAsync(uri, client).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.PutJsonAsync(uri, client).ConfigureAwait(false);
 
         return new ResultResponseDto
         {
@@ -72,7 +79,7 @@ public class ClientsResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/clients/{id}", UriKind.Relative);
 
-        using var response = await instance.HttpClient.DeleteAsync(uri).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.DeleteAsync(uri).ConfigureAwait(false);
 
         return new ResultResponseDto
         {
