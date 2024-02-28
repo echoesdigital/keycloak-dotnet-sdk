@@ -9,6 +9,7 @@ global using System.Text.Json.Serialization;
 global using System.Web;
 global using Echoes.Digital.Keycloak.Dotnet.Sdk.Dtos.Auth;
 global using Echoes.Digital.Keycloak.Dotnet.Sdk.Dtos.Clients;
+global using Echoes.Digital.Keycloak.Dotnet.Sdk.Dtos.ClientScopes;
 global using Echoes.Digital.Keycloak.Dotnet.Sdk.Dtos.Core;
 global using Echoes.Digital.Keycloak.Dotnet.Sdk.Dtos.Realms;
 global using Echoes.Digital.Keycloak.Dotnet.Sdk.Dtos.RoleMappers;
