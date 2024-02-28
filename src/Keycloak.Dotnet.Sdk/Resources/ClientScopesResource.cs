@@ -1,12 +1,19 @@
 ﻿namespace Echoes.Digital.Keycloak.Dotnet.Sdk.Resources;
 
-public class ClientScopesResource(KeycloakInstance instance)
+public class ClientScopesResource
 {
+    private readonly KeycloakInstance _instance;
+
+    public ClientScopesResource(KeycloakInstance instance)
+    {
+        _instance = instance;
+    }
+
     public async Task<ResultResponseDto> Create(string realm, ClientScopeDto clientScope)
     {
         var uri = new Uri($"admin/realms/{realm}/client-scopes", UriKind.Relative);
 
-        using var response = await instance.HttpClient.PostJsonAsync(uri, clientScope).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.PostJsonAsync(uri, clientScope).ConfigureAwait(false);
 
         return new ResultResponseDto
         {
@@ -22,7 +29,7 @@ public class ClientScopesResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/client-scopes/{clientScopeUuid}", UriKind.Relative);
 
-        using var response = await instance.HttpClient.GetAsync(uri).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.GetAsync(uri).ConfigureAwait(false);
 
         return new ResultResponseDto<ClientScopeDto>
         {
@@ -39,7 +46,7 @@ public class ClientScopesResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/client-scopes", UriKind.Relative);
 
-        using var response = await instance.HttpClient.GetAsync(uri).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.GetAsync(uri).ConfigureAwait(false);
 
         return new ResultResponseDto<List<ClientScopeDto>>
         {
@@ -56,7 +63,7 @@ public class ClientScopesResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/client-scopes/{clientScope.Id}", UriKind.Relative);
 
-        using var response = await instance.HttpClient.PutJsonAsync(uri, clientScope).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.PutJsonAsync(uri, clientScope).ConfigureAwait(false);
 
         return new ResultResponseDto
         {
@@ -72,7 +79,7 @@ public class ClientScopesResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/client-scopes/{clientScopeUuid}", UriKind.Relative);
 
-        using var response = await instance.HttpClient.DeleteAsync(uri).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.DeleteAsync(uri).ConfigureAwait(false);
 
         return new ResultResponseDto
         {

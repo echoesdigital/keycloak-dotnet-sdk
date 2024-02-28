@@ -1,12 +1,19 @@
 ﻿namespace Echoes.Digital.Keycloak.Dotnet.Sdk.Resources;
 
-public class ProtocolMappersResource(KeycloakInstance instance)
+public class ProtocolMappersResource
 {
+    private readonly KeycloakInstance _instance;
+
+    public ProtocolMappersResource(KeycloakInstance instance)
+    {
+        _instance = instance;
+    }
+
     public async Task<ResultResponseDto> Create(string realm, string clientScopeUuid, ProtocolMapperDto protocolMapper)
     {
         var uri = new Uri($"admin/realms/{realm}/client-scopes/{clientScopeUuid}/protocol-mappers/models", UriKind.Relative);
 
-        using var response = await instance.HttpClient.PostJsonAsync(uri, protocolMapper).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.PostJsonAsync(uri, protocolMapper).ConfigureAwait(false);
 
         return new ResultResponseDto
         {
@@ -22,7 +29,7 @@ public class ProtocolMappersResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/client-scopes/{clientScopeUuid}/protocol-mappers/models/{protocolMapperUuid}", UriKind.Relative);
 
-        using var response = await instance.HttpClient.GetAsync(uri).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.GetAsync(uri).ConfigureAwait(false);
 
         return new ResultResponseDto
         {
@@ -38,7 +45,7 @@ public class ProtocolMappersResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/client-scopes/{clientScopeUuid}/protocol-mappers/models", UriKind.Relative);
 
-        using var response = await instance.HttpClient.GetAsync(uri).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.GetAsync(uri).ConfigureAwait(false);
 
         return new ResultResponseDto<List<ProtocolMapperDto>>
         {
@@ -55,7 +62,7 @@ public class ProtocolMappersResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/client-scopes/{clientScopeUuid}/protocol-mappers/models/{protocolMapper.Id}", UriKind.Relative);
 
-        using var response = await instance.HttpClient.PutJsonAsync(uri, protocolMapper).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.PutJsonAsync(uri, protocolMapper).ConfigureAwait(false);
 
         return new ResultResponseDto
         {
@@ -71,7 +78,7 @@ public class ProtocolMappersResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/client-scopes/{clientScopeUuid}/protocol-mappers/models/{protocolMapperUuid}", UriKind.Relative);
 
-        using var response = await instance.HttpClient.DeleteAsync(uri).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.DeleteAsync(uri).ConfigureAwait(false);
 
         return new ResultResponseDto
         {

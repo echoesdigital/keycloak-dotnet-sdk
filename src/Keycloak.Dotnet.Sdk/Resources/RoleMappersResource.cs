@@ -1,12 +1,19 @@
 ﻿namespace Echoes.Digital.Keycloak.Dotnet.Sdk.Resources;
 
-public class UserRoleMappingsResource(KeycloakInstance instance)
+public class UserRoleMappingsResource
 {
+    private readonly KeycloakInstance _instance;
+
+    public UserRoleMappingsResource(KeycloakInstance instance)
+    {
+        _instance = instance;
+    }
+
     public async Task<ResultResponseDto> Create(string realm, string userId, List<RoleDto> roles)
     {
         var uri = new Uri($"admin/realms/{realm}/users/{userId}/role-mappings/realm", UriKind.Relative);
 
-        using var response = await instance.HttpClient.PostJsonAsync(uri, roles).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.PostJsonAsync(uri, roles).ConfigureAwait(false);
 
         return new ResultResponseDto
         {
@@ -22,7 +29,7 @@ public class UserRoleMappingsResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/users/{userId}/role-mappings", UriKind.Relative);
 
-        using var response = await instance.HttpClient.GetAsync(uri).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.GetAsync(uri).ConfigureAwait(false);
 
         return new ResultResponseDto<RoleMappingsDto>
         {
@@ -39,7 +46,7 @@ public class UserRoleMappingsResource(KeycloakInstance instance)
     {
         var uri = new Uri($"admin/realms/{realm}/users/{userId}/role-mappings/realm", UriKind.Relative);
 
-        using var response = await instance.HttpClient.DeleteJsonAsync(uri, roles).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.DeleteJsonAsync(uri, roles).ConfigureAwait(false);
 
         return new ResultResponseDto
         {
