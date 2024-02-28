@@ -1,0 +1,49 @@
+name: Publish to NuGet.org
+
+on:
+  release:
+    types: [published]
+
+env:
+  CURRENT_DIR: ./src/
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: GitHub Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "6.0.x"
+
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0
+        with:
+          versionSpec: "5.x"
+          preferLatestVersion: true
+
+      - name: Determine Version
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v0
+
+      - name: Build
+        run: dotnet build -c Release /p:Version=${{ steps.gitversion.outputs.majorMinorPatch }}
+        working-directory: ${{ env.CURRENT_DIR }}
+
+      - name: Test
+        run: dotnet test -c Release --no-build
+        working-directory: ${{ env.CURRENT_DIR }}
+
+      - name: Pack Nugets
+        run: dotnet pack -c Release --no-build --output . /p:Version=${{ steps.gitversion.outputs.majorMinorPatch }}
+        working-directory: ${{ env.CURRENT_DIR }}
+
+      - name: Push to NuGet.org
+        run: dotnet nuget push "*.nupkg" --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+        working-directory: ${{ env.CURRENT_DIR }}

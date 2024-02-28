@@ -6,6 +6,12 @@
         <Nullable>enable</Nullable>
         <AssemblyName>Echoes.Digital.Keycloak.Dotnet.Sdk</AssemblyName>
         <RootNamespace>Echoes.Digital.Keycloak.Dotnet.Sdk</RootNamespace>
+        <Title>Keycloak .Net SDK</Title>
+	    <Company>Echoes Digital</Company>
+        <PackageProjectUrl>https://github.com/echoesdigital/keycloak-dotnet-sdk</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/echoesdigital/keycloak-dotnet-sdk</RepositoryUrl>
+        <PackageTags>keycloak sdk dotnet</PackageTags>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     </PropertyGroup>
 
 </Project>
