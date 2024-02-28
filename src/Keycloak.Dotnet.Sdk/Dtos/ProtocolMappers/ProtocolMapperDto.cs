@@ -1,4 +1,4 @@
-﻿namespace Echoes.Digital.Keycloak.Dotnet.Sdk.Dtos.Clients;
+﻿namespace Echoes.Digital.Keycloak.Dotnet.Sdk.Dtos.ProtocolMappers;
 
 public record ProtocolMapperDto
 {
