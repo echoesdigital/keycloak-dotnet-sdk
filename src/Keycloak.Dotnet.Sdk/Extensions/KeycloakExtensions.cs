@@ -11,7 +11,7 @@ public static class KeycloakExtensions
     {
         config.Realm = realm;
         config.ServiceUrl = KeycloakApiUrl;
-        config.UserAccount = new KeycloakAuthConfig.UserAccountAggregation()
+        config.UserAccount = new KeycloakAuthConfig.UserAccountComposition()
         {
             ClientId = KeycloakApiClientId,
             Username = KeycloakApiUsername,
