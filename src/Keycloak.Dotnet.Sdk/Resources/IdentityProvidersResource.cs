@@ -21,7 +21,8 @@ public class IdentityProvidersResource
             {
                 Success = response.IsSuccessStatusCode,
                 Message = await response.Content.ReadAsStringAsync().ConfigureAwait(false)
-            }
+            },
+            Identifier = response.Headers.Location?.Segments.LastOrDefault()
         };
     }
 
@@ -103,7 +104,8 @@ public class IdentityProvidersResource
             {
                 Success = response.IsSuccessStatusCode,
                 Message = await response.Content.ReadAsStringAsync().ConfigureAwait(false)
-            }
+            },
+            Identifier = response.Headers.Location?.Segments.LastOrDefault()
         };
     }
 
