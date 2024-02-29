@@ -91,6 +91,23 @@ public class IdentityProvidersResource
         };
     }
 
+    public async Task<ResultResponseDto> ImportConfig(string realm, string identityProviderAlias, IdentityProviderImportConfigDto config)
+    {
+        var uri = new Uri($"admin/realms/{realm}/identity-provider/instances/{identityProviderAlias}/import-config", UriKind.Relative);
+
+        using var response = await _instance.HttpClient.PostJsonAsync(uri, config).ConfigureAwait(false);
+
+        return new ResultResponseDto<Dictionary<string, string>>
+        {
+            Data = response.IsSuccessStatusCode ? await response.Content.ReadAsJsonAsync<Dictionary<string, string>>().ConfigureAwait(false) : null,
+            Result =
+            {
+                Success = response.IsSuccessStatusCode,
+                Message = await response.Content.ReadAsStringAsync().ConfigureAwait(false)
+            }
+        };
+    }
+
     public async Task<ResultResponseDto> CreateMapper(string realm, string identityProviderAlias, IdentityProviderMapperDto mapper)
     {
         var uri = new Uri($"admin/realms/{realm}/identity-provider/instances/{identityProviderAlias}/mappers", UriKind.Relative);
