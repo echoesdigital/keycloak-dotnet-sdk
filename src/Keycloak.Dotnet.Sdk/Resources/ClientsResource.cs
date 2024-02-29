@@ -21,7 +21,8 @@ public class ClientsResource
             {
                 Success = response.IsSuccessStatusCode,
                 Message = !response.IsSuccessStatusCode ? await response.Content.ReadAsStringAsync().ConfigureAwait(false) : null
-            }
+            },
+            Identifier = response.Headers.Location?.Segments.LastOrDefault()
         };
     }
 

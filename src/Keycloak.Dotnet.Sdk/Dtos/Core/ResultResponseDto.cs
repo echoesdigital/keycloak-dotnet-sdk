@@ -4,6 +4,8 @@ public record ResultResponseDto
 {
     public ResultComposition Result { get; set; } = new();
 
+    public string? Identifier { get; set; }
+
     public record ResultComposition
     {
         public bool Success { get; set; }
