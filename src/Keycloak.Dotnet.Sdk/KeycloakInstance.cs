@@ -14,6 +14,7 @@ public class KeycloakInstance : IDisposable
         UserRoleMappings = new UserRoleMappingsResource(this);
         ClientScopes = new ClientScopesResource(this);
         IdentityProviders = new IdentityProvidersResource(this);
+        ProtocolMappers = new ProtocolMappersResource(this);
     }
 
     public RealmsResource Realms { get; }
@@ -23,6 +24,7 @@ public class KeycloakInstance : IDisposable
     public UserRoleMappingsResource UserRoleMappings { get; }
     public ClientScopesResource ClientScopes { get; }
     public IdentityProvidersResource IdentityProviders { get; }
+    public ProtocolMappersResource ProtocolMappers { get; }
 
     public void Dispose()
     {
