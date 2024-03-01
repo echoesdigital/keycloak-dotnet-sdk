@@ -92,9 +92,9 @@ public class IdentityProvidersResource
         };
     }
 
-    public async Task<ResultResponseDto> ImportConfig(string realm, string identityProviderAlias, IdentityProviderImportConfigDto config)
+    public async Task<ResultResponseDto> ImportConfig(string realm, IdentityProviderImportConfigDto config)
     {
-        var uri = new Uri($"admin/realms/{realm}/identity-provider/instances/{identityProviderAlias}/import-config", UriKind.Relative);
+        var uri = new Uri($"admin/realms/{realm}/identity-provider/import-config", UriKind.Relative);
 
         using var response = await _instance.HttpClient.PostJsonAsync(uri, config).ConfigureAwait(false);
 
