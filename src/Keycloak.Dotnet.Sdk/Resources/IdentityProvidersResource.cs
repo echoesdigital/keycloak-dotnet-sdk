@@ -92,7 +92,7 @@ public class IdentityProvidersResource
         };
     }
 
-    public async Task<ResultResponseDto> ImportConfig(string realm, IdentityProviderImportConfigDto config)
+    public async Task<ResultResponseDto<Dictionary<string, string>>> ImportConfig(string realm, IdentityProviderImportConfigDto config)
     {
         var uri = new Uri($"admin/realms/{realm}/identity-provider/import-config", UriKind.Relative);
 
