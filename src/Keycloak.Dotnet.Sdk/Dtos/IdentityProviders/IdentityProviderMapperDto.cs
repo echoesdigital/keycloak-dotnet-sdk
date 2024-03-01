@@ -8,39 +8,36 @@ public record IdentityProviderMapperDto
     [JsonPropertyName("name")]
     public string? Name { get; init; }
 
-    [JsonPropertyName("category")]
-    public string? Category { get; init; }
+    [JsonPropertyName("identityProviderAlias")]
+    public string? IdentityProviderAlias { get; init; }
 
-    [JsonPropertyName("helpText")]
-    public string? HelpText { get; init; }
+    [JsonPropertyName("identityProviderMapper")]
+    public string? IdentityProviderMapper { get; init; }
 
-    [JsonPropertyName("properties")]
-    public List<PropertyComposition>? Properties { get; init; }
+    [JsonPropertyName("config")]
+    public ConfigComposition? Config { get; init; }
 
-    public record PropertyComposition
+    public record ConfigComposition
     {
-        [JsonPropertyName("name")]
-        public string? Name { get; init; }
+        [JsonPropertyName("syncMode")]
+        public string? SyncMode { get; init; }
 
-        [JsonPropertyName("label")]
-        public string? Label { get; init; }
+        [JsonPropertyName("claim")]
+        public string? Claim { get; init; }
 
-        [JsonPropertyName("helpText")]
-        public string? HelpText { get; init; }
+        [JsonPropertyName("are.claim.values.regex")]
+        public string? AreClaimValuesRegex { get; init; }
 
-        [JsonPropertyName("type")]
-        public string? Type { get; init; }
+        [JsonPropertyName("role")]
+        public string? Role { get; init; }
 
-        [JsonPropertyName("defaultValue")]
-        public object? DefaultValue { get; init; }
+        [JsonPropertyName("user.attribute")]
+        public string? UserAttribute { get; init; }
 
-        [JsonPropertyName("options")]
-        public List<string>? Options { get; init; }
+        [JsonPropertyName("attribute")]
+        public string? Attribute { get; init; }
 
-        [JsonPropertyName("secret")]
-        public bool? Secret { get; init; }
-
-        [JsonPropertyName("readOnly")]
-        public bool? ReadOnly { get; init; }
+        [JsonPropertyName("claims")]
+        public Dictionary<string, string>? Claims { get; init; }
     }
 }
