@@ -34,6 +34,9 @@ public record IdentityProviderMapperDto
         [JsonPropertyName("user.attribute")]
         public string? UserAttribute { get; init; }
 
+        [JsonPropertyName("attribute.value")]
+        public string? AttributeValue { get; init; }
+
         [JsonPropertyName("attribute")]
         public string? Attribute { get; init; }
 
