@@ -38,6 +38,6 @@ public record IdentityProviderMapperDto
         public string? Attribute { get; init; }
 
         [JsonPropertyName("claims")]
-        public Dictionary<string, string>? Claims { get; init; }
+        public string? Claims { get; init; }
     }
 }
