@@ -11,7 +11,7 @@ public class KeycloakInstance : IDisposable
         Clients = new ClientsResource(this);
         Users = new UsersResource(this);
         Roles = new RolesResource(this);
-        UserRoleMappings = new UserRoleMappingsResource(this);
+        RoleMappings = new RoleMappingsResource(this);
         ClientScopes = new ClientScopesResource(this);
         IdentityProviders = new IdentityProvidersResource(this);
         ProtocolMappers = new ProtocolMappersResource(this);
@@ -21,7 +21,7 @@ public class KeycloakInstance : IDisposable
     public ClientsResource Clients { get; }
     public UsersResource Users { get; }
     public RolesResource Roles { get; }
-    public UserRoleMappingsResource UserRoleMappings { get; }
+    public RoleMappingsResource RoleMappings { get; }
     public ClientScopesResource ClientScopes { get; }
     public IdentityProvidersResource IdentityProviders { get; }
     public ProtocolMappersResource ProtocolMappers { get; }

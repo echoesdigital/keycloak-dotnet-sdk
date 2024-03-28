@@ -1,10 +1,10 @@
 ﻿namespace Echoes.Digital.Keycloak.Dotnet.Sdk.Resources;
 
-public class UserRoleMappingsResource
+public class RoleMappingsResource
 {
     private readonly KeycloakInstance _instance;
 
-    public UserRoleMappingsResource(KeycloakInstance instance)
+    public RoleMappingsResource(KeycloakInstance instance)
     {
         _instance = instance;
     }
