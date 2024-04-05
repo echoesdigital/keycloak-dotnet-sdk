@@ -1,8 +1,10 @@
 ﻿namespace Echoes.Digital.Keycloak.Dotnet.Sdk;
 
-public class KeycloakInstance : IDisposable
+public sealed class KeycloakInstance : IDisposable
 {
     public readonly HttpClient HttpClient;
+
+    private bool _disposed = false;
 
     public KeycloakInstance(HttpClient httpClient)
     {
@@ -15,6 +17,7 @@ public class KeycloakInstance : IDisposable
         ClientScopes = new ClientScopesResource(this);
         IdentityProviders = new IdentityProvidersResource(this);
         ProtocolMappers = new ProtocolMappersResource(this);
+        UsersProfileResource = new UsersProfileResource(this);
     }
 
     public RealmsResource Realms { get; }
@@ -25,9 +28,23 @@ public class KeycloakInstance : IDisposable
     public ClientScopesResource ClientScopes { get; }
     public IdentityProvidersResource IdentityProviders { get; }
     public ProtocolMappersResource ProtocolMappers { get; }
+    public UsersProfileResource UsersProfileResource { get; }
 
     public void Dispose()
     {
-        HttpClient.Dispose();
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    private void Dispose(bool disposing)
+    {
+        if (_disposed) return;
+        if (disposing) HttpClient.Dispose();
+        _disposed = true;
+    }
+
+    ~KeycloakInstance()
+    {
+        Dispose(false);
     }
 }
