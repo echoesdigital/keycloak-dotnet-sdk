@@ -11,7 +11,7 @@ public class UsersProfileResource
         _instance = instance;
     }
 
-    public async Task<ResultResponseDto> Get(string realm)
+    public async Task<ResultResponseDto<UPConfigDto>> Get(string realm)
     {
         var uri = new Uri($"admin/realms/{realm}/users/profile", UriKind.Relative);
 
