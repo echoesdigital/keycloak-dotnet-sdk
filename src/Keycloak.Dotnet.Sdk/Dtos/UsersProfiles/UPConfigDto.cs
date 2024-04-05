@@ -17,7 +17,7 @@ public record UPConfigDto
         public string? DisplayName { get; init; }
 
         [JsonPropertyName("validations")]
-        public Dictionary<string, string>? Validations { get; init; }
+        public Dictionary<string, object>? Validations { get; init; }
 
         [JsonPropertyName("annotations")]
         public Dictionary<string, object>? Annotations { get; init; }
