@@ -29,6 +29,9 @@ public record UserDto
     [JsonPropertyName("credentials")]
     public List<CredentialsDto>? Credentials { get; set; }
 
+    [JsonPropertyName("requiredActions")]
+    public List<string>? RequiredActions { get; set; }
+
     public record CredentialsDto
     {
         [JsonPropertyName("id")]
