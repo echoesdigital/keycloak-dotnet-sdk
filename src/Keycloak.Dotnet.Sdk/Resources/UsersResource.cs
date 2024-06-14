@@ -109,11 +109,11 @@ public class UsersResource
         };
     }
     
-    public async Task<ResultResponseDto> ExecuteActionsEmail(string realm, string userId, string action)
+    public async Task<ResultResponseDto> ExecuteActionsEmail(string realm, string userId, string[] action)
     {
         var uri = new Uri($"admin/realms/{realm}/users/{userId}/execute-actions-email", UriKind.Relative);
 
-        using var response = await _instance.HttpClient.PutJsonAsync(uri, new { action }).ConfigureAwait(false);
+        using var response = await _instance.HttpClient.PutJsonAsync(uri, action).ConfigureAwait(false);
 
         return new ResultResponseDto
         {
