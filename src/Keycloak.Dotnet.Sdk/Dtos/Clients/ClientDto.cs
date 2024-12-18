@@ -23,6 +23,9 @@ public record ClientDto
     [JsonPropertyName("enabled")]
     public bool? Enabled { get; set; }
 
+    [JsonPropertyName("frontchannelLogout")]
+    public bool? FrontChannelLogout { get; set; }
+
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 
