@@ -18,6 +18,7 @@ public sealed class KeycloakInstance : IDisposable
         IdentityProviders = new IdentityProvidersResource(this);
         ProtocolMappers = new ProtocolMappersResource(this);
         UsersProfileResource = new UsersProfileResource(this);
+        AuthenticationFlows = new AuthenticationFlowsResource(this);
     }
 
     public RealmsResource Realms { get; }
@@ -29,6 +30,7 @@ public sealed class KeycloakInstance : IDisposable
     public IdentityProvidersResource IdentityProviders { get; }
     public ProtocolMappersResource ProtocolMappers { get; }
     public UsersProfileResource UsersProfileResource { get; }
+    public AuthenticationFlowsResource AuthenticationFlows { get; }
 
     public void Dispose()
     {
