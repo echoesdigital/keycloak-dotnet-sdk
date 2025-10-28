@@ -40,4 +40,22 @@ public record RealmDto
 
     [JsonPropertyName("attributes")]
     public Dictionary<string, string>? Attributes { get; set; }
+
+    [JsonPropertyName("browserSecurityHeaders")]
+    public BrowserSecurityHeaders? BrowserSecurityHeaders { get; set; }
+
+    [JsonPropertyName("loginTheme")]
+    public string? LoginTheme { get; set; }
+
+    [JsonPropertyName("accountTheme")]
+    public string? AccountTheme { get; set; }
+
+    [JsonPropertyName("adminTheme")]
+    public string? AdminTheme { get; set; }
+
+    [JsonPropertyName("emailTheme")]
+    public string? EmailTheme { get; set; }
+
+    [JsonPropertyName("browserFlow")]
+    public string? BrowserFlow { get; set; }
 }
