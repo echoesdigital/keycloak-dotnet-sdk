@@ -46,4 +46,11 @@ public record IdentityProviderDto
 
     [JsonPropertyName("updateProfileFirstLogin")]
     public bool? UpdateProfileFirstLogin { get; init; }
+
+    /// <summary>
+    /// Hides the provider button on the login page (Keycloak 26+, top-level property).
+    /// Older versions used the <c>hideOnLoginPage</c> key inside <see cref="Config"/>.
+    /// </summary>
+    [JsonPropertyName("hideOnLogin")]
+    public bool? HideOnLogin { get; init; }
 }
