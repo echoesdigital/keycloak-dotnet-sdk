@@ -58,4 +58,47 @@ public record RealmDto
 
     [JsonPropertyName("browserFlow")]
     public string? BrowserFlow { get; set; }
+
+    // Session. Values in seconds. Null is not serialized, so a PUT with a partial DTO keeps the current value.
+
+    [JsonPropertyName("ssoSessionIdleTimeout")]
+    public int? SsoSessionIdleTimeout { get; set; }
+
+    [JsonPropertyName("ssoSessionMaxLifespan")]
+    public int? SsoSessionMaxLifespan { get; set; }
+
+    [JsonPropertyName("offlineSessionIdleTimeout")]
+    public int? OfflineSessionIdleTimeout { get; set; }
+
+    [JsonPropertyName("offlineSessionMaxLifespanEnabled")]
+    public bool? OfflineSessionMaxLifespanEnabled { get; set; }
+
+    [JsonPropertyName("offlineSessionMaxLifespan")]
+    public int? OfflineSessionMaxLifespan { get; set; }
+
+    // Brute force detection.
+
+    [JsonPropertyName("bruteForceProtected")]
+    public bool? BruteForceProtected { get; set; }
+
+    [JsonPropertyName("permanentLockout")]
+    public bool? PermanentLockout { get; set; }
+
+    [JsonPropertyName("maxFailureWaitSeconds")]
+    public int? MaxFailureWaitSeconds { get; set; }
+
+    [JsonPropertyName("minimumQuickLoginWaitSeconds")]
+    public int? MinimumQuickLoginWaitSeconds { get; set; }
+
+    [JsonPropertyName("waitIncrementSeconds")]
+    public int? WaitIncrementSeconds { get; set; }
+
+    [JsonPropertyName("quickLoginCheckMilliSeconds")]
+    public long? QuickLoginCheckMilliSeconds { get; set; }
+
+    [JsonPropertyName("maxDeltaTimeSeconds")]
+    public int? MaxDeltaTimeSeconds { get; set; }
+
+    [JsonPropertyName("failureFactor")]
+    public int? FailureFactor { get; set; }
 }
